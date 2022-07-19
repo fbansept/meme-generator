@@ -1,0 +1,37 @@
+<div class="container">
+  <form
+    class="d-flex flex-column col-4 mt-4"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="formulaire"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Nom du meme</mat-label>
+      <input
+        matInput
+        placeholder="Ex. Not sure"
+        value=""
+        formControlName="nom"
+      />
+      <mat-error *ngIf="formulaire.get('nom')?.hasError('minlength')">
+        Minimum 3 caractères
+      </mat-error>
+      <mat-error *ngIf="formulaire.get('nom')?.hasError('required')">
+        Le nom est obligatoire
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description meme</mat-label>
+      <textarea
+        matInput
+        placeholder="Ex. Meme quand on doute"
+        formControlName="description"
+      ></textarea>
+      <mat-error>
+        La description est obligatoire
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Ajouter</button>
+  </form>
+</div>

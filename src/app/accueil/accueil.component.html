@@ -1,1 +1,5 @@
-<p>accueil works!</p>
+<div *ngFor="let meme of listeMeme">
+  {{ meme.nom }}
+
+  <button mat-raised-button (click)="onClicSupprimer(meme.nom)">Supprimer</button>
+</div>

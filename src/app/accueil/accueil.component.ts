@@ -8,21 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilComponent implements OnInit {
 
-  public listeMeme : any;
+  public listeMeme: any;
 
   constructor(private client: HttpClient) { }
 
   ngOnInit(): void {
-    this.client
-      .get("http://localhost:4000/memes")
-      .subscribe(listeMeme => 
-        this.listeMeme = listeMeme)
 
+    this.raffraichir()
   }
 
-  onClicSupprimer(nomMeme: String){
+  raffraichir() {
+    this.client
+      .get("http://localhost:4000/memes")
+      .subscribe(listeMeme =>
+        this.listeMeme = listeMeme)
+  }
+
+  onClicSupprimer(nomMeme: String) {
     this.client
       .delete("http://localhost:4000/meme/" + nomMeme)
-      .subscribe(message => alert("meme supprimé"))
+      .subscribe(message => this.raffraichir())
   }
 }

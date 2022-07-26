@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     MatButtonModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -33,13 +33,30 @@
     </mat-form-field>
 
     <div>
-      <input #inputImage type="file" style="display: none" (change)="onFichierChange($event)">
-      {{fichier?.name || "Aucun fichier selectionné"}}
-      <button mat-mini-fab color="primary" (click)="$event.preventDefault(); inputImage.click()">
+      <input
+        #inputImage
+        type="file"
+        style="display: none;"
+        (change)="onFichierChange($event)"
+      />
+      {{ fichier?.name || 'Aucun fichier selectionné' }}
+      <button
+        mat-mini-fab
+        color="primary"
+        (click)="$event.preventDefault(); inputImage.click()"
+      >
         <mat-icon>attach_file</mat-icon>
       </button>
+      <img [attr.src]="sourceImage" style="max-width: 100px;" />
+      <mat-progress-bar
+        *ngIf="progressionUpload"
+        mode="determinate"
+        [value]="progressionUpload"
+      ></mat-progress-bar>
     </div>
 
-    <button mat-raised-button color="primary">Ajouter</button>
+    
+
+    <button class="mt-5" mat-raised-button color="primary">Ajouter</button>
   </form>
 </div>

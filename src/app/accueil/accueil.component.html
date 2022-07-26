@@ -1,5 +1,10 @@
 <div *ngFor="let meme of listeMeme">
   {{ meme.nom }}
-
-  <button mat-raised-button (click)="onClicSupprimer(meme.nom)">Supprimer</button>
+  <img
+    style="max-width: 200px;"
+    [attr.src]="'http://localhost:4000/uploads/' + meme.image_url"
+  />
+  <button mat-raised-button (click)="onClicSupprimer(meme.nom)">
+    Supprimer
+  </button>
 </div>

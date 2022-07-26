@@ -14,12 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
-    CreationMemeOriginalComponent
+    CreationMemeOriginalComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,

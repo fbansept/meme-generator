@@ -19,7 +19,7 @@ export class InscriptionComponent implements OnInit {
     }
   );
 
-  constructor(private client : HttpClient) { }
+  constructor(private client: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -39,7 +39,7 @@ export class InscriptionComponent implements OnInit {
   onSubmit() {
     this.formulaire.markAllAsTouched();
 
-    
+
 
     if (this.formulaire.valid) {
 
@@ -47,7 +47,9 @@ export class InscriptionComponent implements OnInit {
         .set('content-type', 'application/json')
         .set('Access-Control-Allow-Origin', '*');
 
-        this.client.post("http://localhost:4000/utilisateur", this.formulaire.value, {headers})
+      this.client
+        .post("http://localhost:4000/utilisateur", this.formulaire.value, { headers })
+        .subscribe(retour => console.log(retour))
     }
 
   }

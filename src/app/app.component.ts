@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConnecteService } from './connecte.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'meme-generator';
+
+  public connecte: boolean = false;
+
+  constructor(private connecteService: ConnecteService) { }
+
+  ngOnInit() {
+    this.connecteService._connecte.subscribe(
+      valeur => this.connecte = valeur
+    )
+  }
+
+
 }

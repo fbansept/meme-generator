@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ConnecteService } from '../connecte.service';
 
 @Component({
   selector: 'app-connexion',
@@ -16,12 +18,11 @@ export class ConnexionComponent implements OnInit {
     }
   );
 
-  constructor(private client: HttpClient) { }
-
-  ngOnInit(): void {
-  }
-
-  //TODO : ajouter la route et intercepter le bearer dans l'entete 
+  constructor(
+    private client: HttpClient,
+    private connecteService: ConnecteService,
+    private router: Router
+  ) { }
 
   onSubmit() {
     if (this.formulaire.valid) {
@@ -32,7 +33,15 @@ export class ConnexionComponent implements OnInit {
 
       this.client
         .post("http://localhost:4000/connexion", this.formulaire.value, { headers })
-        .subscribe(utilisateur => console.log(utilisateur))
+        .subscribe(
+          {
+            next: (resultat) => {
+              this.connecteService.setConnecte(true)
+              this.router.navigateByUrl("/")
+            },
+            error: (erreur) => alert("mauvais login/password")
+          }
+        )
     }
   }
 

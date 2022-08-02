@@ -10,12 +10,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { JwtInterceptor } from './jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
     MatProgressBarModule,
     NgxDropzoneModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass:JwtInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

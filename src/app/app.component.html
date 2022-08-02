@@ -18,14 +18,16 @@
         <li class="nav-item">
           <a class="nav-link active" routerLink="">Accueil</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="creation-meme-original">
-            Creation meme original
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Creation meme perso</a>
-        </li>
+        <ng-container *ngIf="connecte">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="creation-meme-original">
+              Creation meme original
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Creation meme perso</a>
+          </li>
+        </ng-container>
       </ul>
       <form class="d-flex">
         <input class="form-control me-sm-2" type="text" placeholder="Search" />

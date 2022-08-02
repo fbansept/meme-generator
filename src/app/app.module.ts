@@ -15,13 +15,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     CreationMemeOriginalComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,

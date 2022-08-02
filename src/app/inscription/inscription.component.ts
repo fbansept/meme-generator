@@ -44,11 +44,19 @@ export class InscriptionComponent implements OnInit {
     if (this.formulaire.valid) {
 
       const headers = new HttpHeaders()
-        .set('content-type', 'application/json')
+        //  .set('content-type', 'application/json')
         .set('Access-Control-Allow-Origin', '*');
 
+      const formData = new FormData();
+
+      if (this.avatar) {
+        formData.append("image", this.avatar);
+      }
+
+      formData.append("utilisateur", JSON.stringify(this.formulaire.value))
+
       this.client
-        .post("http://localhost:4000/utilisateur", this.formulaire.value, { headers })
+        .post("http://localhost:4000/utilisateur", formData, { headers })
         .subscribe(retour => console.log(retour))
     }
 
